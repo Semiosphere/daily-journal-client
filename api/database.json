@@ -32,19 +32,19 @@
   "moods": [
     {
       "id": 1,
-      "label": "Happy"
+      "label": "Apathetic"
     },
     {
       "id": 2,
-      "label": "Sad"
+      "label": "Ecstatic"
     },
     {
       "id": 3,
-      "label": "Angry"
+      "label": "Bored"
     },
     {
       "id": 4,
-      "label": "Ok"
+      "label": "Apprehensive"
     }
   ]
 }
