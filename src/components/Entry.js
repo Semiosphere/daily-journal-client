@@ -4,13 +4,13 @@ export const Entry = ({ entry, mood, onEditButtonClick, onDeleteButtonClick }) =
   const getMessageType = () => {
     if (mood) {
       switch (mood.label) {
-        case 'Angry':
+        case 'Apathetic':
           return 'is-danger'
-        case 'Happy':
+        case 'Ecstatic':
           return 'is-success'
-        case 'Ok':
+        case 'Bored':
           return 'is-warning'
-        case 'Sad':
+        case 'Apprehensive':
           return 'is-primary'
         default:
           break;
