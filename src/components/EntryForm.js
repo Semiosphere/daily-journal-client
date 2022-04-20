@@ -3,7 +3,15 @@ import React, { useState, useEffect } from "react"
 export const EntryForm = ({ entry, moods, onFormSubmit }) => {
     const [editMode, setEditMode] = useState(false)
     const [updatedEntry, setUpdatedEntry] = useState(entry)
-
+    const [tags, setTags] = useState([]);
+    useEffect(() => {
+        fetch("http://localhost:8088/tags")
+            .then((res) => res.json())
+            .then((tagArray) => {
+                setTags(tagArray);
+            });
+    }, []);
+    const [selectedTags, setSelectedTags] = useState([]);
     useEffect(() => {
         setUpdatedEntry(entry)
         if ('id' in entry) {
@@ -23,8 +31,7 @@ export const EntryForm = ({ entry, moods, onFormSubmit }) => {
         newEntry[event.target.name] = event.target.value
         setUpdatedEntry(newEntry)
     }
-
-
+    
 
     const constructNewEntry = () => {
         const copyEntry = { ...updatedEntry }
@@ -78,6 +85,30 @@ export const EntryForm = ({ entry, moods, onFormSubmit }) => {
                                         </option>
                                     ))}
                                 </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="field">
+                        <label htmlFor="tagId" className="label">Tag(s): </label>
+                        <div className="control">
+                            <div className="tagInput">
+                               {
+                                   tags.map(t => (
+                                       <div key={t.id}>
+                                           <input className="tagCheckboxes" type="checkbox"
+                                           prototype="int"
+                                           value={t.id}
+                                           onChange={evt => {
+                                               if(evt.target.checked) {
+                                                   const copy = [...selectedTags]
+                                                   copy.push(t.id)
+                                                   setSelectedTags(copy)
+                                               }
+                                           }}
+                                           /><p>{t.name}</p>
+                                        </div>
+                                   ))
+                               } 
                             </div>
                         </div>
                     </div>

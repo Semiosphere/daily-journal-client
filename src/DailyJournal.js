@@ -4,10 +4,12 @@ import { EntryList } from "./components/EntryList";
 import { addEntry, deleteEntry, getEntries, getEntryById, updateEntry } from "./components/EntryManager";
 import { getMoods } from "./components/mood/MoodManager";
 
+
 export const DailyJournal = () => {
   const [entries, setEntries] = useState([])
   const [moods, setMoods] = useState([])
   const [entry, setEntry] = useState({})
+
 
   useEffect(() => {
     getAllEntries()
